@@ -18,7 +18,8 @@ let others = {};
 let myId = null;
 
 /* --- WebSocket --- */
-const ws = new WebSocket("ws://localhost:3000");
+const wsProtocol = location.protocol === "https:" ? "wss://" : "ws://";
+const ws = new WebSocket(wsProtocol + location.host);
 
 ws.onmessage = e => {
   const data = JSON.parse(e.data);
